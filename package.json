@@ -1,0 +1,60 @@
+{
+  "name": "manhattan-character-count",
+  "version": "1.0.0",
+  "description": "Add a character count to an text input or textarea.",
+  "engines": {
+    "node": ">=8.9.4"
+  },
+  "main": "umd/index.js",
+  "module": "module/index.js",
+  "files": [
+    "module",
+    "umd"
+  ],
+  "scripts": {
+    "build": "webpack",
+    "lint": "eslint src spec *.js --quiet",
+    "test": "cross-env NODE_ENV=test nyc mocha ./spec/**/*.spec.js || exit 0",
+    "watch": "webpack --watch"
+  },
+  "nyc": {
+    "exclude": [
+      "spec/setup.js",
+      "spec/**/*.spec.js"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:GetmeUK/manhattan-js-character-count.git"
+  },
+  "keywords": [
+    "manhattan"
+  ],
+  "author": "Anthony Blackshaw",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-istanbul": "^4.1.5",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.1.2",
+    "cross-env": "^5.1.3",
+    "eslint": "^4.18.1",
+    "jsdom": "^11.6.2",
+    "mocha": "^5.0.1",
+    "nyc": "^11.4.1",
+    "sinon": "^4.3.0",
+    "sinon-chai": "^2.14.0",
+    "webpack": "^3.11.0"
+  }
+}
