@@ -3,42 +3,41 @@ var webpack = require('webpack');
 
 
 module.exports = {
-     entry: {
+    entry: {
         'index': './module/index.js',
         'index.min': './module/index.js'
-     },
+    },
 
-     output: {
+    externals: {
+        'manhattan-essentials': 'manhattan-essentials'
+    },
 
-         library: "manhattanCharacterCount",
+    output: {
+        library: "manhattanCharacterCount",
+        libraryTarget: "umd",
+        filename: "umd/[name].js"
+    },
 
-         // We want webpack to build a UMD wrapper for our module
-         libraryTarget: "umd",
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['es2015']
+                }
+            }
+        ]
+    },
 
-         // the destination file name
-         filename: "umd/[name].js"
-     },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            include: /\.min\.js$/,
+            minimize: true
+        })
+    ],
 
-     module: {
-         loaders: [
-             {
-                 test: /\.js$/,
-                 loader: 'babel-loader',
-                 query: {
-                     presets: ['es2015']
-                 }
-             }
-         ]
-     },
-
-     plugins: [
-         new webpack.optimize.UglifyJsPlugin({
-             include: /\.min\.js$/,
-             minimize: true
-         })
-     ],
-
-     stats: {
-         colors: true
-     }
- };
+    stats: {
+        colors: true
+    }
+};

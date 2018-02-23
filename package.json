@@ -12,10 +12,10 @@
     "umd"
   ],
   "scripts": {
-    "build": "webpack",
-    "lint": "eslint src spec *.js --quiet",
+    "build": "webpack || exit 0",
+    "lint": "eslint module spec *.js --quiet",
     "test": "cross-env NODE_ENV=test nyc mocha ./spec/**/*.spec.js || exit 0",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch || exit 0"
   },
   "nyc": {
     "exclude": [
@@ -51,6 +51,7 @@
     "cross-env": "^5.1.3",
     "eslint": "^4.18.1",
     "jsdom": "^11.6.2",
+    "manhattan-essentials": "^1.0.0",
     "mocha": "^5.0.1",
     "nyc": "^11.4.1",
     "sinon": "^4.3.0",
