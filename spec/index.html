@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>manhattan-character-count</title>
+    </head>
+    <body>
+        <textarea
+            data-mh-character-count
+            data-mh-character-count--max-characters="10"
+            >Test</textarea>
+        <script src="../node_modules/manhattan-essentials/umd/index.js"></script>
+        <script src="../umd/index.js"></script>
+        <script>
+
+            $ = window['manhattan-essentials']
+            CharacterCount = manhattanCharacterCount.CharacterCount
+
+            for(let fieldElm of $.many('[data-mh-character-count]')) {
+                let cc = new CharacterCount(fieldElm)
+            }
+
+        </script>
+    </body>
+</html>

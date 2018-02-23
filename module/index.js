@@ -9,7 +9,7 @@ import * as $ from 'manhattan-essentials'
  */
 export class CharacterCount {
 
-    constructor(input, options={}, prefix='data-mh-character-count') {
+    constructor(input, options={}, prefix='data-mh-character-count--') {
 
         // Configure the options (@@ TODO: Address options vs this question)
         $.config(
@@ -60,7 +60,8 @@ export class CharacterCount {
         this._dom.input._mhCharacterCount = this
 
         // Create the counter element
-        const counter = this.behaviours.counter[this._behaviours.counter]
+        const cls = this.constructor
+        const counter = cls.behaviours.counter[this._behaviours.counter]
         this._dom.counter = counter(this)
 
         // Set up event handlers
@@ -109,7 +110,7 @@ export class CharacterCount {
         let counterText = characters.toString()
         if (this.maxCharacters > 0) {
             counterText =
-                `${characters} ${this.separator} ${this.maxCharacters}`
+                `${characters}${this.separator}${this.maxCharacters}`
         }
         this._dom.counter.innerHTML = counterText
 
