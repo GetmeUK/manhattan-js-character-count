@@ -16,9 +16,10 @@
 ## Usage
 
 ```JavaScript
-from 'manhattan-character-count' import CharacterCount
+import * as $ from 'manhattan-essentials'
+import {CharacterCount} from 'manhattan-character-count' 
 
-for(let textField in $.many('mh-character-count')) {
+for(let textField in $.many('data-mh-character-count')) {
     let cc = CharacterCount(textField)
     cc.init()
 }
