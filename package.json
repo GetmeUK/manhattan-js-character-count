@@ -58,6 +58,6 @@
     "webpack": "^3.11.0"
   },
   "dependencies": {
-    "manhattan-essentials": "^1.0.0",
+    "manhattan-essentials": "^1.0.0"
   }
 }
