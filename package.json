@@ -1,7 +1,7 @@
 {
   "name": "manhattan-character-count",
   "version": "1.0.1",
-  "description": "Add a character count to an text input or textarea.",
+  "description": "Add a character count to a text input or textarea.",
   "engines": {
     "node": ">=8.9.4"
   },
