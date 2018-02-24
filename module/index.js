@@ -12,8 +12,10 @@ export class CharacterCount {
     constructor(input, options={}, prefix='data-mh-character-count--') {
 
         // Configure the options (@@ TODO: Address options vs this question)
+        this._options = {}
+
         $.config(
-            this,
+            this._options,
             {
 
                 /**
@@ -26,13 +28,7 @@ export class CharacterCount {
                  * The separator string used to separate the current number of
                  * characters and the maximum.
                  */
-                'separator': ' / ',
-
-                /**
-                 * A class applied to the counter element if the number of
-                 * characters in the text field exceeds the maximum.
-                 */
-                'tooLongCSSClass': 'counter--too-long'
+                'separator': ' / '
 
             },
             options,
@@ -59,30 +55,25 @@ export class CharacterCount {
         this._dom.input = input
         this._dom.input._mhCharacterCount = this
 
-        // Create the counter element
-        const cls = this.constructor
-        const counter = cls.behaviours.counter[this._behaviours.counter]
-        this._dom.counter = counter(this)
-
         // Set up event handlers
         this._handlers = {
             'update': () => {
                 this.update()
             }
         }
-
-        // Set up event listeners
-        $.listen(this._dom.input, {'input': this._handlers.update})
-
-        // Perform an initial update to set the counter
-        this.update()
     }
 
     // -- Getters & Setters --
 
+    get counter() {
+        return this._dom.counter
+    }
+
     get input() {
         return this._dom.input
     }
+
+    // -- Public methods --
 
     /**
      * Remove the character counter.
@@ -92,10 +83,28 @@ export class CharacterCount {
         $.ignore(this._dom.input, {'input': this._handlers.update})
 
         // Remove the counter element
-        this._dom.counter.remove()
+        if (this._dom.counter) {
+            this._dom.counter.remove()
+        }
 
         // Remove the character count references from the text field
-        delete this._dom.input.__mh_character_count
+        delete this._dom.input._mhCharacterCount
+    }
+
+    /**
+     * Initialize the character counter
+     */
+    init() {
+        // Create the counter element
+        const cls = this.constructor,
+            counter = cls.behaviours.counter[this._behaviours.counter]
+        this._dom.counter = counter(this)
+
+        // Set up event listeners
+        $.listen(this._dom.input, {'input': this._handlers.update})
+
+        // Perform an initial update to set the counter
+        this.update()
     }
 
     /**
@@ -104,28 +113,29 @@ export class CharacterCount {
      */
     update() {
         // Count the characters
-        const characters = this._dom.input.value.length
+        const cls = this.constructor,
+            characters = this._dom.input.value.length,
+            {maxCharacters} = this._options
 
         // Update the contents of the counter to reflect the new count
         let counterText = characters.toString()
-        if (this.maxCharacters > 0) {
+        if (maxCharacters > 0) {
             counterText =
-                `${characters}${this.separator}${this.maxCharacters}`
+                `${characters}${this._options.separator}${maxCharacters}`
         }
         this._dom.counter.innerHTML = counterText
 
         // If a maximum number of characters has been specified then
         // apply/remove a CSS class to flag that the contents exceeds the
         // maximum.
-        if (this.maxCharacters > 0) {
-            if (characters > this.maxCharacters) {
-                this._dom.counter.classList.add(this.tooLongCSSClass)
+        if (maxCharacters > 0) {
+            if (characters > maxCharacters) {
+                this._dom.counter.classList.add(cls.css['max-exceeded'])
             } else {
-                this._dom.counter.classList.remove(this.tooLongCSSClass)
+                this._dom.counter.classList.remove(cls.css['max-exceeded'])
             }
         }
     }
-
 }
 
 
@@ -144,18 +154,37 @@ CharacterCount.behaviours = {
          * The default behaviour creates a new div element and inserts it into
          * the the DOM after the text field.
          */
-        'default': (characterCount) => {
+        'default': (inst) => {
 
             // Create a counter element
-            const counter = $.create('div', {'class': 'counter'})
+            const cls = inst.constructor,
+                counter = $.create('div', {'class': cls.css['counter']})
 
             // Insert the counter after the input/textarea
-            characterCount.input.parentNode.insertBefore(
+            inst.input.parentNode.insertBefore(
                 counter,
-                characterCount.input.nextSibling
+                inst.input.nextSibling
             )
 
             return counter
         }
     }
+}
+
+
+// -- CSS classes --
+
+CharacterCount.css = {
+
+    /**
+     * Applied to the counter element.
+     */
+    'counter': 'mh-counter',
+
+    /**
+     * Applied to the counter element if the number of characters exceeds the
+     * maximum number of characters.
+     */
+    'max-exceeded': 'mh-counter--max-exceeded'
+
 }
