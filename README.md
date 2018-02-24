@@ -1,7 +1,7 @@
 <div align="center">
     <img width="196" height="96" vspace="20" src="http://assets.getme.co.uk/manhattan-logo--variation-b.svg">
     <h1>Manhattan Character Count</h1>
-    <p>Add a character count to an text input or textarea.</p>
+    <p>Add a character count to a text input or textarea.</p>
 </div>
 
 ## Installation
