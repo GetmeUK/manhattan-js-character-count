@@ -16,5 +16,6 @@ from 'manhattan-character-count' import CharacterCount
 
 for(let textField in $.many('mh-character-count')) {
     let cc = CharacterCount(textField)
+    cc.init()
 }
 ```
