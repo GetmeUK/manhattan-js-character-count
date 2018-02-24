@@ -11,7 +11,7 @@
 
 ## Usage
 
-```JavaScipt
+```JavaScript
 from 'manhattan-character-count' import CharacterCount
 
 for(let textField in $.many('mh-character-count')) {
