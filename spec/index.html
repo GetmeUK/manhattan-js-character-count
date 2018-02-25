@@ -13,7 +13,7 @@
         <script>
 
             $ = window['manhattan-essentials']
-            CharacterCount = manhattanCharacterCount.CharacterCount
+            CharacterCount = window['manhattan-character-count'].CharacterCount
 
             for(let fieldElm of $.many('[data-mh-character-count]')) {
                 let cc = new CharacterCount(fieldElm)

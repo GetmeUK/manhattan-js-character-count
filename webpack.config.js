@@ -13,7 +13,7 @@ module.exports = {
     },
 
     output: {
-        library: "manhattanCharacterCount",
+        library: "manhattan-character-count",
         libraryTarget: "umd",
         filename: "umd/[name].js"
     },
