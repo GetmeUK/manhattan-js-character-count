@@ -102,7 +102,7 @@ describe('CharacterCounter', () => {
                 characterCount.update.should.not.have.been.called
 
                 // Restore the update function (from a spy)
-                characterCount.update.restore()
+                characterCount.update.resetHistory()
 
                 chai.expect(characterCount._dom.counter.parentNode).to.be.null
                 chai.expect(characterCount._dom.input._mhCharacterCount)
