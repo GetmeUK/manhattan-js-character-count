@@ -120,8 +120,8 @@ export class CharacterCount {
         // Update the contents of the counter to reflect the new count
         let counterText = characters.toString()
         if (maxCharacters > 0) {
-            counterText =
-                `${characters}${this._options.separator}${maxCharacters}`
+            counterText
+                = `${characters}${this._options.separator}${maxCharacters}`
         }
         this._dom.counter.innerHTML = counterText
 

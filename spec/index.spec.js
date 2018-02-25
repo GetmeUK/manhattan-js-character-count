@@ -69,16 +69,16 @@ describe('CharacterCounter', () => {
         // -- Getters & Setters --
 
         describe('input', () => {
-            it('should return the counter element the character counter is ' +
-               'applied to', () => {
+            it('should return the counter element the character counter is '
+               + 'applied to', () => {
                 characterCount.init()
                 chai.expect(characterCount.counter).not.to.be.undefined
                 const {counter} = characterCount._dom
                 characterCount.counter.should.equal(counter)
             })
 
-            it('should return the textarea the character counter is ' +
-               'applied to', () => {
+            it('should return the textarea the character counter is '
+               + 'applied to', () => {
                 characterCount.input.should.equal(textarea)
             })
         })
@@ -138,8 +138,8 @@ describe('CharacterCounter', () => {
 
         describe('update', () => {
 
-            it('should update the counter inline with the textarea\'s ' +
-               'content', () => {
+            it('should update the counter inline with the textarea\'s '
+               + 'content', () => {
 
                 characterCount.init()
                 characterCountWithMax.init()
