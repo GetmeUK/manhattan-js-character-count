@@ -11,7 +11,7 @@ export class CharacterCount {
 
     constructor(input, options={}, prefix='data-mh-character-count--') {
 
-        // Configure the options (@@ TODO: Address options vs this question)
+        // Configure the options
         this._options = {}
 
         $.config(
