@@ -11,8 +11,8 @@ chai.use(require('sinon-chai'))
 
 describe('CharacterCounter', () => {
 
-    let textarea = null,
-        textareaWithMax = null
+    let textarea = null
+    let textareaWithMax = null
 
     beforeEach(() => {
         const {body} = document
@@ -43,8 +43,8 @@ describe('CharacterCounter', () => {
 
     describe('constructor', () => {
         it('should generate a new `CharacterClass` instance', () => {
-            const characterCount = new CharacterCount(textarea),
-                characterCountWithMax = new CharacterCount(textareaWithMax)
+            const characterCount = new CharacterCount(textarea)
+            const characterCountWithMax = new CharacterCount(textareaWithMax)
 
             characterCount.should.be.an.instanceof(CharacterCount)
             characterCountWithMax.should.be.an.instanceof(CharacterCount)
@@ -53,8 +53,8 @@ describe('CharacterCounter', () => {
 
     describe('methods', () => {
 
-        let characterCount = null,
-            characterCountWithMax = null
+        let characterCount = null
+        let characterCountWithMax = null
 
         beforeEach(() => {
             characterCount = new CharacterCount(textarea)

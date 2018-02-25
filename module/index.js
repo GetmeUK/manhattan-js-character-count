@@ -96,8 +96,8 @@ export class CharacterCount {
      */
     init() {
         // Create the counter element
-        const cls = this.constructor,
-            counter = cls.behaviours.counter[this._behaviours.counter]
+        const cls = this.constructor
+        const counter = cls.behaviours.counter[this._behaviours.counter]
         this._dom.counter = counter(this)
 
         // Set up event listeners
@@ -113,9 +113,9 @@ export class CharacterCount {
      */
     update() {
         // Count the characters
-        const cls = this.constructor,
-            characters = this._dom.input.value.length,
-            {maxCharacters} = this._options
+        const cls = this.constructor
+        const characters = this._dom.input.value.length
+        const {maxCharacters} = this._options
 
         // Update the contents of the counter to reflect the new count
         let counterText = characters.toString()
@@ -157,8 +157,8 @@ CharacterCount.behaviours = {
         'default': (inst) => {
 
             // Create a counter element
-            const cls = inst.constructor,
-                counter = $.create('div', {'class': cls.css['counter']})
+            const cls = inst.constructor
+            const counter = $.create('div', {'class': cls.css['counter']})
 
             // Insert the counter after the input/textarea
             inst.input.parentNode.insertBefore(
