@@ -12,8 +12,8 @@
         <script src="../umd/index.js"></script>
         <script>
 
-            $ = window['manhattan-essentials']
-            CharacterCount = window['manhattan-character-count'].CharacterCount
+            const $ = window['manhattan-essentials']
+            const CharacterCount = window['manhattan-character-count'].CharacterCount
 
             for(let fieldElm of $.many('[data-mh-character-count]')) {
                 let cc = new CharacterCount(fieldElm)
