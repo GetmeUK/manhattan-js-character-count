@@ -87,7 +87,7 @@ export class CharacterCount {
             this._dom.counter.remove()
         }
 
-        // Remove the character count references from the text field
+        // Remove the character count reference from the text field
         delete this._dom.input._mhCharacterCount
     }
 
