@@ -79,7 +79,7 @@ export class CharacterCount {
      * Remove the character counter.
      */
     destroy() {
-        // Remove event hanglers
+        // Remove event handlers
         $.ignore(this._dom.input, {'input': this._handlers.update})
 
         // Remove the counter element
