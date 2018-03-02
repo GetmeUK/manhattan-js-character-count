@@ -92,7 +92,7 @@ export class CharacterCount {
     }
 
     /**
-     * Initialize the character counter
+     * Initialize the character counter.
      */
     init() {
         // Create the counter element
