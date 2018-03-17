@@ -50,10 +50,8 @@ export class CharacterCount {
         // Domain for related DOM elements
         this._dom = {}
 
-        // Store a reference to the input field (we also store a reverse
-        // reference to this instance against the input).
+        // Store a reference to the input field
         this._dom.input = input
-        this._dom.input._mhCharacterCount = this
 
         // Set up event handlers
         this._handlers = {
@@ -95,6 +93,9 @@ export class CharacterCount {
      * Initialize the character counter.
      */
     init() {
+        // Store a reference to the character count instance against the input
+        this._dom.input._mhCharacterCount = this
+
         // Create the counter element
         const cls = this.constructor
         const counter = cls.behaviours.counter[this._behaviours.counter]
