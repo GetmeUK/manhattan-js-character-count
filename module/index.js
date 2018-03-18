@@ -131,9 +131,9 @@ export class CharacterCount {
         // maximum.
         if (maxCharacters > 0) {
             if (characters > maxCharacters) {
-                this._dom.counter.classList.add(cls.css['max-exceeded'])
+                this._dom.counter.classList.add(cls.css['maxExceeded'])
             } else {
-                this._dom.counter.classList.remove(cls.css['max-exceeded'])
+                this._dom.counter.classList.remove(cls.css['maxExceeded'])
             }
         }
     }
@@ -186,6 +186,6 @@ CharacterCount.css = {
      * Applied to the counter element if the number of characters exceeds the
      * maximum number of characters.
      */
-    'max-exceeded': 'mh-counter--max-exceeded'
+    'maxExceeded': 'mh-counter--max-exceeded'
 
 }

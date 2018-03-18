@@ -154,7 +154,7 @@ describe('CharacterCounter', () => {
                     .equal('12 / 10')
 
                 characterCountWithMax.counter.classList
-                    .contains(CharacterCount.css['max-exceeded'])
+                    .contains(CharacterCount.css['maxExceeded'])
                     .should
                     .be
                     .true
